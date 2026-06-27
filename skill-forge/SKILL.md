@@ -36,6 +36,7 @@ These bake the user's established patterns into every skill produced. They are n
 5. **Explain the why, not heavy-handed MUSTs** — Modern Claude has strong theory of mind. Explain *why* an instruction matters rather than stacking rigid ALL-CAPS commands. Reserve hard rules for genuine safety or correctness constraints.
 6. **Project-agnostic by default** — Unless the skill is explicitly for one project, open with a context-intake step so it works across any product or domain.
 7. **Output is an artifact** — Skills that produce deliverables produce files, cleanly formatted, ready to use — not summary paragraphs.
+8. **Confidential / per-user context lives in a git-ignored `*.local.md`** — never inline secrets, legal terms, or one-user financials in a synced `SKILL.md`. Put them in a `references/<name>.local.md` the skill loads at runtime (degrading to a generic intake if absent), so the skill stays portable/syncable while the sensitive context stays local-only. The `*.local.md` suffix is held back by `.gitignore` (dotfiles route) and the sync `--exclude` (plugin route).
 
 ---
 
