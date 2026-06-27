@@ -9,7 +9,7 @@ description: >
   recommended next action, then STOPS for human approval — it never edits code or executes work
   itself. Trigger when the user says "run the orchestrator", "convene the orchestrator", "what
   should I work on across my projects", "plan across my projects", "portfolio plan",
-  "cross-project agenda", "what's the highest-leverage thing right now", or asks the AI-CEO /
+  "cross-project agenda", "what's the highest-leverage thing right now across my projects", or asks the AI-CEO /
   portfolio layer what's next. Honors the governance gate (never autonomous on PHI/payments
   surfaces; human approval + token budget per cycle).
 ---

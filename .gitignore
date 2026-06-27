@@ -1,4 +1,5 @@
 .DS_Store
-# Held back from sync: contains confidential CIAA terms. Keep local, or remove this
-# line if you're comfortable storing it in your private repo.
-shadow-board-advisor/
+# Local-only, never synced: confidential business/legal context that skills load at runtime
+# (e.g. shadow-board-advisor/references/user-context.local.md — CIAA / acquisition / fundraising).
+# The skills themselves now sync; only their *.local.md context files are held back.
+*.local.md

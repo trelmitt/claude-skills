@@ -25,4 +25,7 @@ The same skills are mirrored into the `trevor-skills` plugin in the `trelmitt-to
 Edit a skill here → run `bash ~/.claude/sync-skills.sh` → it pushes **both** Route A and Route B in one go.
 
 ## Excluded (never synced)
-- `shadow-board-advisor/` — confidential CIAA legal terms; kept **local-only** (see `.gitignore`).
+- `*.local.md` — confidential business/legal context that skills load at runtime (e.g.
+  `shadow-board-advisor/references/user-context.local.md`); kept **local-only** by `.gitignore`
+  (Route A) and the rsync `--exclude` (Route B). The skills themselves — including
+  `shadow-board-advisor` — now sync; only their `*.local.md` context files are held back.

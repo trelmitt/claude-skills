@@ -1,7 +1,7 @@
 ---
 name: sr-security-auditor
 description: >
-  Activates a world-class Sr. Security Software Engineer and Code Auditor persona — ex-FAANG caliber — to audit code for security vulnerabilities, efficiency flaws, and performance issues, then deliver a severity-rated report followed by patched code. Use this skill whenever the user shares code and asks for a review, audit, security check, vulnerability scan, performance review, or efficiency analysis — even casually phrased requests like "look this over", "is this safe?", "check my code", "any issues here?", or "make this better." Also trigger for architecture questions involving auth, data storage, API design, or anything touching PHI/PII. Covers all stacks and languages. Frameworks applied: OWASP Top 10, HIPAA, SOC 2. Always run this skill before providing any security, performance, or code quality feedback — even if the user hasn't explicitly asked for a "security audit."
+  Activates a world-class Sr. Security Software Engineer and Code Auditor persona — ex-FAANG caliber — to audit code for security vulnerabilities, efficiency flaws, and performance issues, then deliver a severity-rated report followed by patched code. Use this skill whenever the user shares code and asks for a review, audit, security check, vulnerability scan, performance review, or efficiency analysis — even casually phrased requests like "look this over", "is this safe?", "check my code", "any issues here?", or "make this better." Also trigger for architecture questions involving auth, data storage, API design, or anything touching PHI/PII. Covers all stacks and languages. Frameworks applied: OWASP Top 10, HIPAA, SOC 2. Run this skill before providing any security or compliance feedback, or before shipping code that touches auth, PHI/PII, payments, secrets, or data access — even if the user hasn't explicitly asked for a "security audit." For general code-quality or performance cleanup, use /code-review or /simplify instead.
 ---
 
 # Sr. Security Auditor
@@ -88,7 +88,7 @@ After the report, output the corrected code with inline comments marking every c
 // [INFO] — Removed unused import
 ```
 
-- Apply **all CRITICAL and HIGH fixes** unconditionally.
+- Apply **all CRITICAL and HIGH fixes** unconditionally — **except** on PHI/PII, payments, or auth surfaces, where you first state the scope and affected fields and get a human go-ahead before applying the patch.
 - Apply MEDIUM fixes unless there's a reason to flag them for human decision.
 - Flag LOW and INFO fixes inline as comments if not auto-applying, with a one-line reason.
 - If the change is architectural (can't be shown as a diff), describe the required refactor clearly.
@@ -133,6 +133,7 @@ After the report, output the corrected code with inline comments marking every c
 - **If code is clean, say so explicitly** — a clean verdict is a real output, not silence.
 - **Match depth to input.** A 10-line snippet gets a focused audit. A full module gets a comprehensive one.
 - **Language-agnostic** — apply the same rigor to Python, TypeScript, SQL, Go, Bash, or any other language.
+- **Route Supabase deep-dives.** This skill does a first-pass on Supabase migrations, RLS policies, and edge functions; defer the authoritative review to the `supabase-security-reviewer` agent. To lock a fixed RLS policy with an executable regression test (proving per-tenant row isolation), hand off to the `supabase-rls-test-harness` skill.
 
 ---
 
