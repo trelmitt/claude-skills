@@ -2,25 +2,38 @@
 name: build-vs-borrow
 description: >-
   Prior-art / make-vs-buy gate for code — your "don't reinvent the wheel" reflex. Before
-  building any mid-size-or-larger commodity capability from scratch, it scouts the open-source
-  market and recommends whether to DEPEND on a prevetted library, FORK one, VENDOR-AND-AMEND a
-  piece of one, or BUILD from scratch — and if you must build, it validates that nothing
-  suitable already exists. The goal is to ship faster and cheaper by reusing widely-validated
-  work instead of reinventing it. Trigger this WHENEVER you're about to scaffold a substantial
-  commodity component — a CRM module, code-graph/visualization layer, rate limiter, auth flow,
-  charting, job queue, parser, diff engine, file/CSV/PDF pipeline, state machine, search/index
-  layer — EVEN IF the user only said "build X" and never mentioned open source. Also fire on:
-  "should I build this or is there a library", "is there an open-source version of", "don't
-  reinvent the wheel", "build vs buy", "is there prior art", "find an existing library for
-  this", "can we borrow / fork / steal code for", "before I build this from scratch", "what's
-  the best library for". Do NOT fire for trivial utilities, few-line glue, or your product's
-  core differentiation — searching costs more than writing those, which is the exact waste this
-  skill exists to prevent. Routing — pick a sibling when the job is different: for general
-  (non-code) multi-source web research use deep-research; to design a feature's architecture
-  once you've already decided to build use feature-dev; for a clear-path build use
-  sr-fullstack-engineer (but consult THIS first when the component is a commodity); cracked-dev
-  calls this as a soft checkpoint before building. It is an ADVISOR — it recommends and records
-  the decision (repo ADR + vault note + a decisions registry), and never blocks.
+  building any mid-size-or-larger commodity capability/subsystem from scratch, it scouts the
+  open-source market and recommends whether to DEPEND on a prevetted library, FORK one,
+  VENDOR-AND-AMEND a piece of one, or BUILD from scratch — and if you must build, it validates
+  that nothing suitable already exists. The goal is to ship faster and cheaper by reusing
+  widely-validated work instead of reinventing it. Trigger this WHENEVER you're about to
+  scaffold a substantial commodity capability — illustrative, not exhaustive — e.g. a CRM
+  module, code-graph/visualization layer, rate limiter, auth/SSO flow, charting, job queue or
+  scheduler, parser, diff engine, file/CSV/PDF pipeline, state machine, search/index layer,
+  feature-flag system, notification/email pipeline, caching layer, file upload/storage, webhook
+  delivery, i18n layer — any capability many teams have already built and hardened, EVEN IF the
+  user only said "build X" and never mentioned open source. Also fire on: "should I build this
+  or is there a library", "is there an open-source version of", "don't reinvent the wheel",
+  "build vs buy (a code capability)", "is there prior art", "find an existing library for this",
+  "can we borrow / fork / steal code for", "before I build this from scratch", "what
+  library/package should I use for", "roll my own / hand-roll / DIY / build my own X from
+  scratch". Do NOT fire for trivial utilities or few-line glue (searching costs more than
+  writing those — the exact waste this skill exists to prevent); do NOT fire for UI elements — a
+  button, modal, form, page, or layout (here "capability" means a substantial subsystem, not a
+  React component); do NOT fire for pure research on approaches/patterns with no near-term intent
+  to build (that is deep-research); and do NOT fire for your product's core differentiation —
+  treat as differentiation (skip) anything framed with product-core/possessive language ("our
+  core/proprietary/custom X", "our pricing/ranking/matching engine") even when it sounds like a
+  commodity. Routing — pick a sibling when the job is different: for a cited research REPORT —
+  including comparing tools/libraries when you are NOT about to build — use deep-research (THIS
+  skill is gated on an imminent build and returns an adopt-or-build VERDICT recorded to a
+  decisions registry); if the user asks to DESIGN/architect/lay out structure use feature-dev
+  (THIS skill fires on the build-or-borrow DECISION that precedes architecture; when both are in
+  play, run build-vs-borrow first, then hand to feature-dev); for a clear-path build use
+  sr-fullstack-engineer (but consult THIS first when the capability is a commodity); designed to
+  be consulted by cracked-dev's PLAN phase as a soft checkpoint before building. It is an
+  ADVISOR — it recommends and records the decision (repo ADR + vault note + a decisions
+  registry), and never blocks.
 ---
 
 # Build vs Borrow
@@ -40,11 +53,15 @@ block a build. The human (or the calling loop) decides.
 This skill is only a net win above a complexity floor. Below it, the search costs more than the
 code.
 
-- **Engage** when you're about to build a **mid-size component or larger** AND it's a **commodity**
-  many people have needed before: a CRM module, a code-graph viewer, a rate limiter, an auth
-  flow, a charting layer, a job queue, a parser, a diff engine, a CSV/PDF pipeline, a search index.
-- **Skip** trivial utilities (a debounce, a date format), few-line glue, and anything that is your
-  product's **differentiation** — your secret sauce is never a dependency. Just build those.
+- **Engage** when you're about to build a **mid-size capability/subsystem or larger** AND it's a
+  **commodity** many teams have needed before: a CRM module, a code-graph viewer, a rate limiter,
+  an auth flow, a charting layer, a job queue, a parser, a diff engine, a CSV/PDF pipeline, a
+  search index.
+- **Skip** trivial utilities (a debounce, a date format), few-line glue, **UI elements** (a
+  button, modal, form, page, or layout — "capability" here means a subsystem, not a React
+  component), and anything that is your product's **differentiation** — your secret sauce is never
+  a dependency. Skip too when it's framed with product-core/possessive language ("our
+  pricing/ranking/matching engine") even if it sounds like a commodity. Just build those.
 - **Quick test:** would building it from scratch take more than ~an hour or ~150 lines? If no,
   skip the scout and build it. The full test lives in `references/scoring-rubric.md`.
 
@@ -79,8 +96,9 @@ it and stop — don't re-search what's already decided.
 
 ### SEARCH — let the script do the heavy lifting
 Run the bundled scout. It queries GitHub + the ecosystem registry + OpenSSF Scorecard and returns
-ranked candidates with health, license, and security signals — cheaply and deterministically, so
-you spend tokens on judgment, not fetching:
+candidates with health, license, and security signals — cheaply and deterministically, so you
+spend tokens on judgment, not fetching. (GitHub results are **star-ordered** — the weakest
+signal — so re-rank them in EVALUATE.)
 
 ```bash
 python3 scripts/oss_scout.py --query "<what you're building, in keywords>" \
@@ -90,14 +108,16 @@ python3 scripts/oss_scout.py --query "<what you're building, in keywords>" \
     --limit 8
 ```
 
-Only if the script returns nothing useful, fall back to a focused web search (WebSearch /
-context7) — that's the degradation path, not the default.
+Registry confirmation currently covers **npm and crates only**; for other ecosystems (PyPI, Go
+modules) rely on the GitHub signals alone. Only if the script returns nothing useful, fall back
+to a focused web search (WebSearch / context7) — that's the degradation path, not the default.
 
 ### EVALUATE — judge the signals
-Score candidates with `references/scoring-rubric.md`. The ranking that matters: **license
-compatibility > maintenance recency > security > API fit > bus factor > issue health > stars.**
-Stars are the weakest signal; drop disqualified candidates (archived-as-a-dependency, license
-blocker, dead-and-vulnerable, a weaker fork of a healthier upstream).
+The script returns candidates **star-ordered**, so re-rank them with `references/scoring-rubric.md`.
+The ranking that matters: **license compatibility > maintenance recency > security > API fit >
+bus factor > issue health > stars.** Stars are the weakest signal; drop disqualified candidates
+(archived-as-a-dependency, license blocker, dead-and-vulnerable, a weaker fork of a healthier
+upstream).
 
 ### VERDICT — one of four, with the one-line why
 Decide and state it plainly (full criteria + decision tree in the rubric):
@@ -133,9 +153,10 @@ actions (adding a dependency, opening a PR) still belong to the existing loop's 
 
 This skill is designed to be consulted as a **soft checkpoint** before substantial builds:
 - **cracked-dev**: in the PLAN phase, when the chosen item is "build a mid-size+ commodity
-  component," consult build-vs-borrow before BUILD. Record the verdict in the item's ADR; the
+  capability," consult build-vs-borrow before BUILD. Record the verdict in the item's ADR; the
   decision rides along in the same PR. It never blocks the loop — a BUILD verdict just proceeds.
-- **dev-loop / sr-fullstack-engineer**: before implementing a commodity component from scratch,
+  (cracked-dev's PLAN phase carries the reciprocal pointer.)
+- **dev-loop / sr-fullstack-engineer**: before implementing a commodity capability from scratch,
   run the threshold test; if it clears, run this pipeline first.
 
 Because the verdict is always recorded to the registry, the *next* cycle starts from "already
@@ -153,7 +174,8 @@ decided" instead of re-searching — that's the recursion.
 ## References
 
 - `scripts/oss_scout.py` — the search engine: GitHub + registry + OpenSSF Scorecard + license
-  classification → ranked JSON. Signals only; it never decides.
+  classification → star-ordered JSON candidates. Signals only; it never decides — re-rank per the
+  rubric.
 - `references/scoring-rubric.md` — the threshold test, signal weights, license policy table,
   security tiering, the four verdicts, and the decision flow.
 - `references/adr-template.md` — the repo ADR, decisions-registry, and vault-note templates.

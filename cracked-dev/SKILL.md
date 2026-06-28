@@ -87,6 +87,13 @@ mode, stop here and present the ranked queue.
 State the smallest change that fully solves the item. Note the files you'll touch and exactly
 how you'll verify it. Prefer reversible, well-scoped changes over sweeping refactors.
 
+If the item is to build a **mid-size-or-larger commodity capability** from scratch (auth flow,
+rate limiter, parser, job queue, charting, diff engine, CSV/PDF pipeline, search/index, etc.),
+consult the **`build-vs-borrow`** skill before BUILD and record its verdict in the item's ADR.
+It's advisory and **never blocks** — a BUILD verdict just proceeds — but a DEPEND/FORK/VENDOR
+verdict can save you from reinventing a hardened library. Skip it for trivial utilities, UI
+elements, or your product's differentiation.
+
 ### BUILD — branch + implement
 - `git checkout -b cracked-dev/<short-slug>` off up-to-date `<default>`.
 - Implement to standard. **Match the surrounding code** — its naming, comment density, and

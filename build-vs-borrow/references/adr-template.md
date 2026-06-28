@@ -57,6 +57,8 @@ Keep all three terse. The goal is a future session (or a teammate) finding "we a
 | 2026-06-14 | CRM core | BUILD | nothing fit — see ADR | — | adr/0005 |
 ```
 
+*The Verdict column uses short tokens for terseness: `DEPEND` · `FORK` · `VENDOR` (= VENDOR-AND-AMEND) · `BUILD` (= BUILD-FROM-SCRATCH). Keep them consistent so the index stays greppable.*
+
 When the registry already answers the current need, cite the row and stop — don't re-run the scout.
 
 ---
