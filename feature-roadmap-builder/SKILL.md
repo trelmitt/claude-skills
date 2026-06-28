@@ -1,7 +1,7 @@
 ---
 name: feature-roadmap-builder
 description: >
-  Converts a product idea shortlist or raw feature list into a structured, scored, and actionable roadmap artifact in Markdown. Use this skill whenever the user wants to build, formalize, or output a product roadmap, prioritize a feature backlog, create a Now/Next/Later plan, generate a scored feature list, or says anything like "turn this into a roadmap", "prioritize these ideas", "build me a roadmap", "what order should I build these in", "help me sequence my features", or "I need a roadmap artifact I can save". Also trigger after a product-idea-generator session when the user is ready to convert ideation output into a structured plan. Outputs a clean Markdown file ready for Obsidian, Notion, or any project tracker.
+  Converts a product idea shortlist or raw feature list into a structured, scored, and actionable roadmap artifact in Markdown. Use this skill whenever the user wants to build, formalize, or output a product roadmap, prioritize a feature backlog, create a Now/Next/Later plan, generate a scored feature list, or says anything like "turn this into a roadmap", "prioritize these ideas", "build me a roadmap", "what order should I build these in", "help me sequence my features", or "I need a roadmap artifact I can save". Also trigger after a product-idea-generator session when the user is ready to convert ideation output into a structured plan, or after a competitive-analysis session to convert its Now/Next/Later action plan into a scored roadmap. Outputs a clean Markdown file ready for Obsidian, Notion, or any project tracker.
 ---
 
 # Feature Roadmap Builder
