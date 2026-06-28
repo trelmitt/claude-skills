@@ -123,3 +123,5 @@ Often the best answer is grab-then-customize: take a validated public skill as t
 - **Rigid MUST-stacking** — piling absolute commands instead of explaining the why; the model fights these and wastes steps.
 - **Reinvented scripts** — making every invocation rewrite the same helper instead of bundling it once in `scripts/`.
 - **Silent overlap** — a new skill whose triggers collide with an existing one, so neither fires reliably.
+- **Framework-loaded trigger nouns** — anchoring a trigger on a word that's everyday vocabulary in the stack (e.g. "component" in a React/TS repo) causes silent over-firing on prompts the skill shouldn't touch. Anchor triggers on framework-neutral nouns ("capability/subsystem") and add an explicit do-NOT carve-out for the collision case.
+- **One-sided integration** — a gate/checkpoint skill that *claims* another skill "calls" or "consults" it without editing that sibling's routing to point back. The claim is inert: triggering is driven by each skill's own description, so the caller never actually invokes it. Wire the reciprocal pointer into the sibling in the same change.

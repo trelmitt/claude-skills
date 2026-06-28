@@ -66,6 +66,8 @@ Draft 2–3 realistic test prompts — the kind the user would actually type. Co
 
 **In claude.ai (no subagents):** run each test yourself one at a time — read the skill, follow it, produce the output. Present results inline for feedback. Skip quantitative benchmarking. This is a sanity check, not a rigorous benchmark.
 
+**Adversarial multi-lens review (default for skills that ship a bundled script or integrate with other skills).** Before shipping, fan out independent reviewers — one per lens: *collision* (trigger overlap with the existing library), *triggering* (an adversarial should-fire / should-not-fire eval set), *script-correctness* (bugs, fragility, security, fitness — and actually run the script), and *house-convention* (this anatomy + the user's CLAUDE.md + internal consistency across SKILL.md/references/scripts) — then a synthesis pass that dedups and severity-ranks. This catches what a single read misses: in practice it surfaced a real script crash, a license-misclassification, and a framework-noun over-fire on one build. Apply the fixes and re-verify. (In Claude Code, a Workflow with `parallel` reviewers → one synthesis agent is the clean shape; route each lens to `opts.phase` so they group cleanly.)
+
 ### Step 4 — Iterate
 
 Read feedback. Improve by generalizing (don't overfit to the test cases), keeping the prompt lean, and explaining the why. If all test runs independently wrote the same helper script, bundle it into `scripts/`. Repeat until the user is happy or feedback is empty.
