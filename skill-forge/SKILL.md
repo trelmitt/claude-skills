@@ -73,7 +73,7 @@ Gate this on the skill's *shape*, not on whether Step 3 ran — a script-only or
 Fan out one reviewer per lens — each actually running/reading the artifacts, not just reasoning about them — then a synthesis pass that dedups and severity-ranks:
 - **Collision** — trigger overlap with the existing library; does its description fire where a sibling should win?
 - **Triggering** — an adversarial should-fire / should-not-fire eval set, including framework-noun over-fire (see `references/skill-anatomy.md`).
-- **Script-correctness** — bugs, fragility, security, fitness in any bundled script; run it against odd / empty / error inputs, not just the happy path.
+- **Script-correctness** — bugs, fragility, security, fitness in any bundled script; run it against odd / empty / error inputs, not just the happy path. For any script that **fetches URLs influenced by external pages or LLM output**, confirm it allowlists schemes (`{http,https}`), rejects private/loopback/link-local/metadata hosts, and re-validates redirects — Python's stdlib `urllib` reads `file://`/`ftp://` and follows redirects to internal IPs by default (see the *unguarded stdlib URL fetch* anti-pattern in `references/skill-anatomy.md`).
 - **House-convention** — these conventions + the user's CLAUDE.md + internal consistency across `SKILL.md` / `references/` / `scripts/`.
 
 Apply the must-fix findings and re-verify. In practice this caught a real script crash, a license-misclassification, and a framework-noun over-fire that all survived a read-through. Workflow mechanics are in `references/eval-loop.md`.
