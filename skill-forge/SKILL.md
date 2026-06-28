@@ -66,13 +66,23 @@ Draft 2–3 realistic test prompts — the kind the user would actually type. Co
 
 **In claude.ai (no subagents):** run each test yourself one at a time — read the skill, follow it, produce the output. Present results inline for feedback. Skip quantitative benchmarking. This is a sanity check, not a rigorous benchmark.
 
-**Adversarial multi-lens review (default for skills that ship a bundled script or integrate with other skills).** Before shipping, fan out independent reviewers — one per lens: *collision* (trigger overlap with the existing library), *triggering* (an adversarial should-fire / should-not-fire eval set), *script-correctness* (bugs, fragility, security, fitness — and actually run the script), and *house-convention* (this anatomy + the user's CLAUDE.md + internal consistency across SKILL.md/references/scripts) — then a synthesis pass that dedups and severity-ranks. This catches what a single read misses: in practice it surfaced a real script crash, a license-misclassification, and a framework-noun over-fire on one build. Apply the fixes and re-verify. (In Claude Code, a Workflow with `parallel` reviewers → one synthesis agent is the clean shape; route each lens to `opts.phase` so they group cleanly.)
+### Step 4 — Adversarial multi-lens review (skills that ship a script or are wired into / consulted by other skills)
 
-### Step 4 — Iterate
+Gate this on the skill's *shape*, not on whether Step 3 ran — a script-only or consulted-by-other-skills skill may have no verifiable test output (so it skips Step 3) yet still needs this. Any skill that **ships a bundled script** or is **meant to be wired into / consulted by other skills** gets an adversarial review before shipping, because a single careful read misses the failure classes each lens is tuned for.
+
+Fan out one reviewer per lens — each actually running/reading the artifacts, not just reasoning about them — then a synthesis pass that dedups and severity-ranks:
+- **Collision** — trigger overlap with the existing library; does its description fire where a sibling should win?
+- **Triggering** — an adversarial should-fire / should-not-fire eval set, including framework-noun over-fire (see `references/skill-anatomy.md`).
+- **Script-correctness** — bugs, fragility, security, fitness in any bundled script; run it against odd / empty / error inputs, not just the happy path.
+- **House-convention** — these conventions + the user's CLAUDE.md + internal consistency across `SKILL.md` / `references/` / `scripts/`.
+
+Apply the must-fix findings and re-verify. In practice this caught a real script crash, a license-misclassification, and a framework-noun over-fire that all survived a read-through. Workflow mechanics are in `references/eval-loop.md`.
+
+### Step 5 — Iterate
 
 Read feedback. Improve by generalizing (don't overfit to the test cases), keeping the prompt lean, and explaining the why. If all test runs independently wrote the same helper script, bundle it into `scripts/`. Repeat until the user is happy or feedback is empty.
 
-### Step 5 — Package
+### Step 6 — Package
 
 ```bash
 cd <skills-dir> && zip -r <skill-name>.skill <skill-name>/
@@ -182,5 +192,5 @@ Update the frontmatter description. Show the user before/after and the trigger-r
 
 ## Reference Files
 
-- `references/eval-loop.md` — Full mechanics of the proven test/grade/benchmark/optimize loop (subagent spawning, timing capture, aggregation, viewer, description optimization). Load when running rigorous evals in Claude Code or Cowork.
+- `references/eval-loop.md` — Full mechanics of the proven test/grade/benchmark/optimize loop (subagent spawning, timing capture, aggregation, viewer, description optimization) plus the adversarial multi-lens review (Step 4). Load when running rigorous evals or the multi-lens review in Claude Code or Cowork.
 - `references/skill-anatomy.md` — Detailed guide to skill structure, frontmatter, progressive disclosure, writing patterns, and the build-vs-grab decision framework. Load when drafting or restructuring a skill.

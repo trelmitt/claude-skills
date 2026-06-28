@@ -132,6 +132,21 @@ Splits 60/40 train/held-out, evaluates current description (3 runs per query for
 
 ---
 
+## Adversarial Multi-Lens Review
+
+The default pre-ship check for any skill that ships a bundled script or is meant to be wired into / consulted by other skills (SKILL.md CREATE Step 4). Independent reviewers each take one lens, then a synthesis pass dedups and severity-ranks — distinct lenses surface distinct failure classes a single read-through misses.
+
+Clean Workflow shape in Claude Code: `parallel` reviewers (one per lens) → one synthesis agent. Route each lens to its own `opts.phase` so they group cleanly in the progress view, and give each reviewer a findings schema (`{lens, severity, finding, fix}`) so the synthesizer gets structured input rather than prose.
+
+- **Collision** — read the other skills' descriptions; flag trigger overlap where a sibling should win.
+- **Triggering** — build a small should-fire / should-not-fire set (per the Description Optimization Loop above) and include framework-noun over-fire cases.
+- **Script-correctness** — actually run the bundled script against odd / empty / error inputs (null fields, non-dict bodies, empty results), not just the happy path.
+- **House-convention** — check the anatomy, the user's CLAUDE.md, and internal consistency across `SKILL.md` / `references/` / `scripts/`.
+
+Synthesis returns must-fix / should-fix / optional. Apply must-fix, re-verify, then ship.
+
+---
+
 ## Blind Comparison (Optional, Advanced)
 
 For "is the new version actually better?" — give two outputs to an independent agent without revealing which is which, let it judge, then analyze why the winner won. Requires subagents. The human review loop is usually sufficient; most cases don't need this.
