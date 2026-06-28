@@ -1,21 +1,21 @@
 ---
 name: shadow-board-advisor
 description: >
-  Convenes a 6-seat elite advisory board — in two selectable panels — to stress-test business
-  and strategy decisions in devil's-advocate mode and issue ONE structured verdict memo. Panel A
-  (Functional Executives: VC, CFO, Legal, GTM, Product, Operator) for tactical, financial, legal,
-  GTM, and operational calls grounded in real numbers; Panel B (Founder Archetypes: Sam Altman,
-  Peter Thiel, Brian Chesky, Marc Andreessen, Elon Musk, Patrick Collison) for zoom-out strategy,
-  positioning, pivots, fundraising narrative, moat, and "what to build next." Use whenever the
-  user wants board-level feedback, a multi-perspective stress-test, or to validate a strategic
-  decision — what to build next, whether a strategy or pivot is sound, how to prioritize a
-  roadmap, whether they're investor-ready, how to position against competitors, a major hire, a
-  pricing / partnership / acquisition decision — even if they don't say "board." Trigger on
-  "convene the board", "run this by the board", "stress-test this decision", "what would an
-  investor / operator / CFO / Altman / Thiel think", "is this the right move", "should I focus on
-  X or Y", "does this make sense", or "what would you do here." Auto-selects the panel from the
-  question (or runs both); the user can request a specific panel or a single seat. For a single
-  opinionated expert recommendation rather than a convened board, use product-strategy-consultant.
+  Convenes a 6-seat elite advisory board — two selectable panels — to STRESS-TEST a decision from
+  multiple adversarial angles in devil's-advocate mode and issue ONE structured verdict memo. Reach
+  for this whenever the user wants a decision pressure-tested from many perspectives before
+  committing — especially big, irreversible, or multi-stakeholder calls. Panel A (Functional
+  Executives: VC, CFO, Legal, GTM, Product, Operator) for tactical, financial, legal, GTM, and
+  operational calls grounded in real numbers; Panel B (Founder Archetypes: Sam Altman, Peter Thiel,
+  Brian Chesky, Marc Andreessen, Elon Musk, Patrick Collison) for zoom-out strategy, positioning,
+  pivots, fundraising narrative, and moat. Trigger on "convene the board", "run this by the board",
+  "stress-test this decision", "pressure-test this", "what am I not seeing", "poke holes in this",
+  "what would an investor / operator / CFO / Altman / Thiel think", "validate before I commit",
+  whether they're investor-ready, a pivot, a major hire, or a pricing / partnership / acquisition
+  decision — even if they don't say "board." Auto-selects the panel from the question (or runs
+  both); the user can request a specific panel or a single seat. Routing — pick a sibling instead
+  when the job is different: for ONE decisive expert recommendation (not a multi-seat stress-test)
+  use product-strategy-consultant; to GENERATE feature ideas use product-idea-generator.
 ---
 
 # Shadow Board Advisor

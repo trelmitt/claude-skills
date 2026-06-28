@@ -11,7 +11,10 @@ description: >
   should I work on across my projects", "plan across my projects", "portfolio plan",
   "cross-project agenda", "what's the highest-leverage thing right now across my projects", or asks the AI-CEO /
   portfolio layer what's next. Honors the governance gate (never autonomous on PHI/payments
-  surfaces; human approval + token budget per cycle).
+  surfaces; human approval + token budget per cycle). This is the CROSS-PROJECT layer only — for
+  what to build or decide WITHIN a single project use product-idea-generator (generate feature
+  ideas), product-strategy-consultant (decide one question), or shadow-board-advisor (stress-test
+  a decision).
 ---
 
 # Portfolio Orchestrator (Phase 2 — plan-mode)

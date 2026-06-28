@@ -11,11 +11,14 @@ sessions, and is visible in PRs).
   ruled-out item; never redo a done item.
 - **Write last:** at the LOG step of every cycle, append/update the file **on the current
   item's branch**, so the log entry rides along in that item's PR.
-- **Accumulation model:** as PRs merge, entries accumulate on `main`. A fresh session reading
-  `main` sees everything that has merged.
-  - *Tradeoff:* learnings on open (unmerged) branches aren't on `main` yet. Within a session
-    you still see your own branches; across sessions, check open PRs (`gh pr list`) before
-    assuming an item is untouched.
+- **Accumulation model:** as PRs merge, entries accumulate on the default branch (`<default>`).
+  A fresh session reading `<default>` sees everything that has merged.
+  - *Tradeoff:* learnings on open (unmerged) branches aren't on `<default>` yet. Within a
+    session you still see your own branches; across sessions, check open PRs (`gh pr list`)
+    before assuming an item is untouched.
+- **In full-auto:** the SCOUT subagent performs the read-first and the BUILDER subagent performs
+  the write-last on its item branch (see *Execution model* in `SKILL.md`). The orchestrator
+  itself neither reads nor writes this file — keeping its context flat is the whole point.
 
 ## First-run creation
 
@@ -36,7 +39,7 @@ _Working memory for /cracked-dev. Read first, write last. Committed to the repo.
 - Tests: <command>
 - Build: <command>
 - Commit style: <e.g. conventional commits>
-- PR / merge: <e.g. gh pr create --fill --base main; CodeRabbit gate; auto-merge>
+- PR / merge: <e.g. gh pr create --fill --base <default>; CodeRabbit gate; auto-merge>
 - Other house rules: <from CLAUDE.md / CONTRIBUTING>
 
 ## Backlog (ranked)
