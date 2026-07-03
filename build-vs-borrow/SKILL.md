@@ -24,7 +24,13 @@ description: >-
   to build (that is deep-research); and do NOT fire for your product's core differentiation —
   treat as differentiation (skip) anything framed with product-core/possessive language ("our
   core/proprietary/custom X", "our pricing/ranking/matching engine") even when it sounds like a
-  commodity. Routing — pick a sibling when the job is different: for a cited research REPORT —
+  commodity. Routing — pick a sibling when the job is different: if the user has ALREADY decided to
+  borrow and just wants the single best existing option surfaced with an integration plan ("find me
+  the best OSS X", "find an existing library for X I can drop in", "which library should I use for
+  X"), that is find-oss — it returns a pick + integration plan with no threshold gate, no BUILD
+  verdict, and no ADR; THIS skill fires on the still-open build-or-borrow question and returns a
+  DEPEND/FORK/VENDOR/BUILD verdict recorded to a decisions registry (the two share the same
+  oss_scout.py engine and scoring rubric). For a cited research REPORT —
   including comparing tools/libraries when you are NOT about to build — use deep-research (THIS
   skill is gated on an imminent build and returns an adopt-or-build VERDICT recorded to a
   decisions registry); if the user asks to DESIGN/architect/lay out structure use feature-dev
