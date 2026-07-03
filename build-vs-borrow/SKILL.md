@@ -15,9 +15,8 @@ description: >-
   user only said "build X" and never mentioned open source. Also fire on: "should I build this
   or is there a library", "is there an open-source version of", "don't reinvent the wheel",
   "build vs buy (a code capability)", "is there prior art", "find an existing library for this",
-  "can we borrow / fork / steal code for", "before I build this from scratch", "what
-  library/package should I use for", "roll my own / hand-roll / DIY / build my own X from
-  scratch". Do NOT fire for trivial utilities or few-line glue (searching costs more than
+  "can we borrow / fork / steal code for", "before I build this from scratch", "roll my own /
+  hand-roll / DIY / build my own X from scratch". Do NOT fire for trivial utilities or few-line glue (searching costs more than
   writing those — the exact waste this skill exists to prevent); do NOT fire for UI elements — a
   button, modal, form, page, or layout (here "capability" means a substantial subsystem, not a
   React component); do NOT fire for pure research on approaches/patterns with no near-term intent

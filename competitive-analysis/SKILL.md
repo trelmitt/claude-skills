@@ -28,7 +28,9 @@ description: >-
   competitive set itself researched and torn down — that's product-idea-generator (ends in a ranked
   feature list) — or wants open sparring (product-brainstorming); fire here only when the user wants
   the field mapped into a landscape / matrix / moat thesis / battlecard, not merely referenced in
-  passing; when the user is a BUYER comparing tools to adopt ("compare X vs Y for me", "which should
+  passing, AND only when it's FOR OUR product — a neutral landscape/comparison with no "our
+  product" / ownership signal ("map the players in X and how they compare") is deep-research, not
+  this; when the user is a BUYER comparing tools to adopt ("compare X vs Y for me", "which should
   I use") — there's no "our product" to win with, so just answer or use deep-research; and when the
   request is ABOUT this skill itself or its files ("review / audit / edit my competitive-analysis
   code / skill / prompt") — that's /code-review or skill-forge.
