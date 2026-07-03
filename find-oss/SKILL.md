@@ -165,6 +165,18 @@ with its disqualifier, and note that building may now be the right call — hand
 for the formal build-or-borrow verdict, or to `sr-fullstack-engineer` if the user just wants to
 build it. A truthful "nothing good exists" is a valid, valuable result.
 
+## Loop checkpoint — where you sit in the chain
+You are the middle link of `build-vs-borrow → find-oss → implementation`:
+- **cracked-dev** consults you in its PLAN phase after build-vs-borrow returns a **borrow** verdict
+  (DEPEND/FORK/VENDOR), or when an item is "adopt an existing OSS component" — you surface the best
+  option and the integration plan, then the loop's BUILD phase implements that plan. You record a
+  one-line pointer and never block the loop.
+- **sr-fullstack-engineer** hands to you when a "clear-path" task is actually "add/wire in an
+  existing library" — you pick + plan, it writes the code.
+- **build-vs-borrow** hands to you once its verdict is borrow and the user wants the specific pick.
+
+You stop at the plan; the code-writing belongs to the caller (`sr-fullstack-engineer`) or the loop.
+
 ## Token discipline (this skill must save more than it costs)
 - **Script over prose** — `oss_scout.py` fetches signals deterministically; you only judge the
   shortlist. Cap candidates (`--limit`), add `--no-scorecard` for a quick read.

@@ -94,6 +94,12 @@ It's advisory and **never blocks** — a BUILD verdict just proceeds — but a D
 verdict can save you from reinventing a hardened library. Skip it for trivial utilities, UI
 elements, or your product's differentiation.
 
+When that verdict is **borrow** (DEPEND/FORK/VENDOR), or the item itself is "adopt an existing
+open-source component," hand to **`find-oss`** to surface the single best option and produce the
+concrete integration plan (files to touch, install/vendor command, adapter shape, verification
+step); BUILD then implements that plan instead of writing the capability from scratch. Same
+advisory posture — it records a one-line pointer and never blocks the loop.
+
 ### BUILD — branch + implement
 - `git checkout -b cracked-dev/<short-slug>` off up-to-date `<default>`.
 - Implement to standard. **Match the surrounding code** — its naming, comment density, and
