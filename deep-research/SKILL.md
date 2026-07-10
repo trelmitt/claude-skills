@@ -1,37 +1,17 @@
 ---
 name: deep-research
 description: >-
-  Decision-grade, CITED research on any question — your "go find out what's actually true and write
-  it up with sources" reflex — while staying token-cheap via isolated, schema-bound research
-  subagents. Use this WHENEVER the user wants a question genuinely researched and synthesized into a
-  sourced report rather than answered from memory: "research X", "do deep/proper research on X",
-  "write me a report on X", "investigate X", "what's the current state of X", "what are the options
-  for X and their tradeoffs", "compare these tools/companies/approaches for me" (as a neutral BUYER
-  or observer, not to beat them), "size the market / TAM for X" (neutral, not our-product moat),
-  "what does the web/literature say about X", "give me a cited briefing on X", "dig into X and show
-  me the sources". Every claim ties to a source URL — that citation floor is the whole point, and
-  what separates this from a from-memory answer. Works for ANY topic (project-agnostic). It fixes
-  two failures of naive research: it goes deep and ties every fact to a source and an implication
-  (no unsourced assertions, source conflicts surfaced not smoothed), and it red-teams its own
-  conclusion before shipping. And it fixes the cost: a naive research task burns huge token budgets
-  piling raw pages into one context; this fans out one isolated subagent per sub-question that
-  fetches → extracts → discards and returns only compact JSON, so depth gets cheaper, not more
-  expensive (it shares competitive-analysis's fetch/extract engine).
-  Do NOT fire: for a quick one-off factual lookup you can just answer (a date, a definition, one
-  number) — answer it, don't spin up the machine; if X is a commodity code capability you're
-  weighing building or adopting (a rate limiter, auth flow, parser, job queue), that's
-  build-vs-borrow (still-open build-or-borrow) or find-oss (adopt a specific existing one) even if
-  you literally said "research"; for a request ABOUT this skill or its files
-  ("review / edit / audit my deep-research skill") — that's /code-review or skill-forge.
-  Routing — pick a sibling when the job is actually different, and hand back here when it's general
-  research: for a competitive teardown of OUR product's rivals ending in a competitive matrix + moat
-  thesis + product action plan, use competitive-analysis (THIS is the neutral, no-"our-product",
-  no-moat-thesis general report it defers to); when the research is really an imminent build of a
-  commodity capability ("should I build or is there a library for X"), use build-vs-borrow, and when
-  it's adopting one specific existing open-source component, use find-oss (both return a build/adopt
-  VERDICT, not a report); for generating product feature ideas use product-idea-generator, for open
-  sparring use product-brainstorming, and for ONE decisive strategy call use
-  product-strategy-consultant. Durable findings deposit to the vault via vault-companion.
+  Decision-grade, CITED research on any question — "go find out what's actually true and write it
+  up with sources" — synthesized into a sourced report, never answered from memory, and
+  token-cheap via isolated, schema-bound subagents that fetch → extract → discard and return
+  compact JSON. Fire on: "research X", "do deep/proper research on X", "write me a report on X",
+  "investigate X", "what's the current state of X", "options for X and their tradeoffs", "compare
+  these tools/companies/approaches" (as a neutral BUYER or observer), "size the market / TAM for
+  X" (neutral), "what does the web/literature say about X", "give me a cited briefing", "dig into
+  X and show me the sources". Every claim ties to a source URL — that citation floor is the whole
+  point; source conflicts are surfaced, not smoothed, and the conclusion is red-teamed before
+  shipping. Project-agnostic, any topic. Do NOT fire for a quick one-off lookup, or when the ask
+  is our-product positioning/moat — that's competitive-analysis.
 ---
 
 # Deep Research

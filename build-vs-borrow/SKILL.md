@@ -1,44 +1,19 @@
 ---
 name: build-vs-borrow
 description: >-
-  Prior-art / make-vs-buy gate for code — your "don't reinvent the wheel" reflex. Before
-  building any mid-size-or-larger commodity capability/subsystem from scratch, it scouts the
-  open-source market and recommends whether to DEPEND on a prevetted library, FORK one,
-  VENDOR-AND-AMEND a piece of one, or BUILD from scratch — and if you must build, it validates
-  that nothing suitable already exists. The goal is to ship faster and cheaper by reusing
-  widely-validated work instead of reinventing it. Trigger this WHENEVER you're about to
-  scaffold a substantial commodity capability — illustrative, not exhaustive — e.g. a CRM
-  module, code-graph/visualization layer, rate limiter, auth/SSO flow, charting, job queue or
-  scheduler, parser, diff engine, file/CSV/PDF pipeline, state machine, search/index layer,
-  feature-flag system, notification/email pipeline, caching layer, file upload/storage, webhook
-  delivery, i18n layer — any capability many teams have already built and hardened, EVEN IF the
-  user only said "build X" and never mentioned open source. Also fire on: "should I build this
-  or is there a library", "is there an open-source version of", "don't reinvent the wheel",
-  "build vs buy (a code capability)", "is there prior art", "find an existing library for this",
-  "can we borrow / fork / steal code for", "before I build this from scratch", "roll my own /
-  hand-roll / DIY / build my own X from scratch". Do NOT fire for trivial utilities or few-line glue (searching costs more than
-  writing those — the exact waste this skill exists to prevent); do NOT fire for UI elements — a
-  button, modal, form, page, or layout (here "capability" means a substantial subsystem, not a
-  React component); do NOT fire for pure research on approaches/patterns with no near-term intent
-  to build (that is deep-research); and do NOT fire for your product's core differentiation —
-  treat as differentiation (skip) anything framed with product-core/possessive language ("our
-  core/proprietary/custom X", "our pricing/ranking/matching engine") even when it sounds like a
-  commodity. Routing — pick a sibling when the job is different: if the user has ALREADY decided to
-  borrow and just wants the single best existing option surfaced with an integration plan ("find me
-  the best OSS X", "find an existing library for X I can drop in", "which library should I use for
-  X"), that is find-oss — it returns a pick + integration plan with no threshold gate, no BUILD
-  verdict, and no ADR; THIS skill fires on the still-open build-or-borrow question and returns a
-  DEPEND/FORK/VENDOR/BUILD verdict recorded to a decisions registry (the two share the same
-  oss_scout.py engine and scoring rubric). For a cited research REPORT —
-  including comparing tools/libraries when you are NOT about to build — use deep-research (THIS
-  skill is gated on an imminent build and returns an adopt-or-build VERDICT recorded to a
-  decisions registry); if the user asks to DESIGN/architect/lay out structure use feature-dev
-  (THIS skill fires on the build-or-borrow DECISION that precedes architecture; when both are in
-  play, run build-vs-borrow first, then hand to feature-dev); for a clear-path build use
-  sr-fullstack-engineer (but consult THIS first when the capability is a commodity); designed to
-  be consulted by cracked-dev's PLAN phase as a soft checkpoint before building. It is an
-  ADVISOR — it recommends and records the decision (repo ADR + vault note + a decisions
-  registry), and never blocks.
+  Prior-art / make-vs-buy gate for code — your "don't reinvent the wheel" reflex. BEFORE building
+  any mid-size-or-larger commodity capability from scratch, it scouts the open-source market and
+  recommends DEPEND on a prevetted library, FORK one, VENDOR-AND-AMEND a piece, or BUILD — and if
+  building, validates nothing suitable exists. Fire WHENEVER about to scaffold such a capability —
+  e.g. a CRM module, code-graph/visualization layer, rate limiter, auth/SSO flow, charting, job
+  queue or scheduler, parser, diff engine, file/CSV/PDF pipeline, state machine, search/index
+  layer, feature-flag system, notification/email pipeline, caching layer, file upload/storage,
+  webhook delivery, i18n layer (illustrative, not exhaustive) — EVEN IF the user only said "build
+  X". Also fire on: "should I build this or is there a library", "build vs buy" (a code
+  capability), "is there prior art / an open-source version of", "don't reinvent the wheel", "can
+  we borrow/fork/steal code for", "roll my own / hand-roll / DIY X from scratch". Do NOT fire for
+  trivial utilities or few-line glue — searching costs more than writing those. If borrow is
+  already decided, use find-oss instead.
 ---
 
 # Build vs Borrow

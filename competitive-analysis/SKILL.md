@@ -1,47 +1,18 @@
 ---
 name: competitive-analysis
 description: >-
-  Run a deep, decision-grade competitive AND market analysis that ends in a competitive matrix, a
-  moat thesis, and a sequenced product action plan — not a generic research report — while staying
-  token-cheap via isolated, schema-bound research subagents. Use this WHENEVER the work is
-  researching and tearing down the competition or the market FOR OUR product: "run a competitive
-  analysis", "analyze our competitors", "competitive and market analysis", "competitor research /
-  teardown", "who are we really up against", "who else is out there / doing this", "size up the
-  competition / the market for our product", "competitive landscape", "where can we win vs
-  <competitor>", "what's our moat vs these competitors / where can we defend", "how do we
-  differentiate / stand out", "is this defensible / how do we make this hard to copy", "build a
-  battlecard", "is there white space in this category". Also fire when the user names a competitor
-  or category AND wants the field mapped before deciding (e.g. "who are we up against and how do we
-  beat them", "map the competition before we choose what to build"). Works for ANY product
-  (project-agnostic — it loads the specific product's context from the relevant vault Project note
-  at intake). "Competitive" here means business rivals and the market — NOT competitive
-  programming/contests, sports, or one-off pricing questions. It fixes two failures of naive
-  analyses: it goes deep and demonstrates real market understanding (a point-of-view thesis, every
-  fact tied to an implication), and it red-teams its own recommendations before finalizing. And it
-  fixes the cost: a naive competitive analysis can burn 1–2M tokens by piling raw web pages into one
-  context; this fans out one isolated subagent per competitor that fetches → extracts → discards and
-  returns only compact JSON, so depth gets cheaper, not more expensive.
-  Do NOT fire: for a quick one-off factual lookup about a single company (just answer it); for
-  general non-competitive web research, or to "research / size the market (TAM)" or "compare these
-  companies" with NO intent to derive a moat thesis or product action plan — that's deep-research;
-  when the user just wants feature ideas (even with a competitor in mind) rather than the
-  competitive set itself researched and torn down — that's product-idea-generator (ends in a ranked
-  feature list) — or wants open sparring (product-brainstorming); fire here only when the user wants
-  the field mapped into a landscape / matrix / moat thesis / battlecard, not merely referenced in
-  passing, AND only when it's FOR OUR product — a neutral landscape/comparison with no "our
-  product" / ownership signal ("map the players in X and how they compare") is deep-research, not
-  this; when the user is a BUYER comparing tools to adopt ("compare X vs Y for me", "which should
-  I use") — there's no "our product" to win with, so just answer or use deep-research; and when the
-  request is ABOUT this skill itself or its files ("review / audit / edit my competitive-analysis
-  code / skill / prompt") — that's /code-review or skill-forge.
-  Routing — this is the EXTERNAL-market input that FEEDS the product flywheel: hand its action plan
-  to feature-roadmap-builder (sequence + score), a single thorny positioning/pricing call to
-  product-strategy-consultant (to DECIDE how to position a moat), a high-stakes recommendation to
-  shadow-board-advisor (to STRESS-TEST it, deeper than the built-in red-team), and a "build a
-  commodity capability?" recommendation to build-vs-borrow. Fire here only to FIND the moat from the
-  competitive field. Distinct from deep-research (a general cited report) by its fixed competitive
-  schema, competitive matrix + moat-thesis output, incremental dossier, and product action-plan
-  handoff.
+  Run a deep, decision-grade competitive AND market analysis FOR OUR product, ending in a
+  competitive matrix, a moat thesis, and a sequenced action plan — token-cheap via isolated,
+  schema-bound research subagents. Fire on: "run a competitive analysis", "analyze our
+  competitors", "competitor research/teardown", "who are we really up against", "who else is out
+  there/doing this", "size up the competition/the market for our product", "competitive
+  landscape", "where can we win vs <competitor>", "what's our moat / is this defensible / how do
+  we make this hard to copy", "how do we differentiate/stand out", "build a battlecard", "is there
+  white space in this category" — also when the user names a competitor or category AND wants the
+  field mapped before deciding what to build. Project-agnostic (loads product context from the
+  vault Project note at intake). "Competitive" means business rivals and the market — NOT
+  competitive programming/contests, sports, or one-off pricing questions. For neutral research
+  with no our-product angle, use deep-research instead.
 ---
 
 # Competitive Analysis

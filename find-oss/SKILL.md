@@ -1,31 +1,18 @@
 ---
 name: find-oss
 description: >-
-  Active open-source scout-and-adopt — your "someone has already built this; find me the best one
-  and show me how to drop it in" reflex. Use this WHENEVER the build-or-borrow decision is already
-  made in favor of BORROW and you want the single best existing open-source implementation of a
-  specific thing surfaced, vetted, and turned into a concrete adoption plan (which files to touch,
-  depend-vs-vendor-vs-fork, install/copy command, adapter shape, a verification step). Fire on:
-  "find me the best open-source X", "is there an existing library/repo I can use for X", "who has
-  already built X open source", "find an open-source version of X I can copy into this project",
-  "what's the best OSS package/library for X", "I want to add an existing library for X", "search
-  GitHub for the best X", "I've decided not to build X — what existing thing can I adopt", "find
-  something I can drop in for X", "has someone open-sourced X I can steal/borrow", "grab an
-  existing X and wire it in". This skill ASSUMES borrow is already chosen — it finds the best
-  option and hands you an integration plan; it does not re-litigate whether to build. Do NOT fire
-  for trivial utilities or few-line glue (a debounce, a slug, a date-format helper) — writing it is
-  cheaper than scouting, the exact waste this skill exists to avoid. And do NOT fire merely because
-  a query NAMES an existing open-source library — fixing a bug in a React component, debugging an
-  Express route, or comparing lodash vs ramda is not a request to find or adopt one; fire only when
-  the ask is to surface and wire in a NEW dependency. Routing —
-  defer to a sibling when the job is actually different: if the user has NOT yet decided whether to
-  build or borrow ("should I build this or is there a library", "before I build this from scratch",
-  weighing scaffolding a commodity from scratch), that is build-vs-borrow — it returns a
-  build-or-borrow VERDICT; THIS returns the
-  best pick + integration plan (the two share the same oss_scout.py engine and scoring rubric). For
-  a cited research REPORT comparing tools with no near-term intent to adopt, use deep-research. Once
-  you have the plan and want the code written, hand to sr-fullstack-engineer. Records only a
-  lightweight one-line pointer to the decisions registry when one already exists; never blocks.
+  Active open-source scout-and-adopt — "someone has already built this; find me the best one and
+  show me how to drop it in." ASSUMES borrow is already decided: surfaces the single best existing
+  OSS implementation, vets it, and returns a concrete adoption plan (depend vs vendor vs fork,
+  install/copy command, files to touch, adapter shape, verification step) — it does not
+  re-litigate whether to build. Fire on: "find me the best open-source X", "is there an existing
+  library/repo I can use for X", "who has already built X open source", "best OSS package/library
+  for X", "search GitHub for the best X", "find something I can drop in / steal / borrow for X",
+  "I've decided not to build X — what existing thing can I adopt", "grab an existing X and wire it
+  in". Do NOT fire for trivial utilities or few-line glue — a debounce, a slug, a date-format
+  helper (writing beats scouting), and NOT merely because a query NAMES an OSS library — fixing a
+  bug in a React component or comparing lodash vs ramda is not a request to adopt one. To decide
+  build-vs-borrow first, use build-vs-borrow.
 ---
 
 # Find OSS
