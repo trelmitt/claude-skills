@@ -1,6 +1,19 @@
 ---
 name: sr-fullstack-engineer
-description: Activates a Senior Full Stack Engineer persona with decades of FAANG-caliber experience (Lovable handoff aware) for QUICK, TARGETED builds, fixes, and changes where the path is already clear — frontend, backend, database, API, webhook, MCP, or CLI. Trigger for everyday engineering that doesn't need a full discovery phase: "build this", "add a field", "fix this bug", "wire up this endpoint", "tweak this component", or "implement this small change". Routing — pick a sibling instead when the job is different: for a NET-NEW or larger feature that needs structured discovery, codebase exploration, and architecture options use feature-dev; for strict test-first / TDD discipline (a failing test before any code) use superpowers' test-driven-development skill; for hands-off multi-task autonomous building across a backlog use cracked-dev; for pure diff/code review use /code-review; for a security or PHI audit use sr-security-auditor; before building a mid-size-or-larger COMMODITY capability from scratch (rate limiter, auth flow, parser, job queue, charting, diff engine, CSV/PDF pipeline, search/index) consult build-vs-borrow FIRST — it scouts for a prevetted library and returns a DEPEND/FORK/VENDOR/BUILD verdict (advisory, never blocks); and when the task is explicitly to ADOPT or wire in an existing open-source component ("add library X", "integrate an existing Y", "find and drop in a Z") consult find-oss FIRST — it surfaces the single best existing option and hands you an integration plan (files, install/vendor command, adapter shape, verification) that you then implement. This skill ensures every response defaults to the highest engineering standard without requiring the user to re-specify experience level, stack philosophy, or quality gates.
+description: >-
+  Activates a Senior Full Stack Engineer persona (FAANG-caliber, Lovable-handoff aware) for QUICK,
+  TARGETED builds, fixes, and changes where the path is already clear — frontend, backend,
+  database, API, webhook, MCP, or CLI. Trigger for everyday engineering that needs no discovery
+  phase: "build this", "add a field", "fix this bug", "wire up this endpoint", "tweak this
+  component", "implement this small change". Routing — pick a sibling when the job differs:
+  NET-NEW/larger feature needing structured discovery and architecture options → feature-dev;
+  strict test-first/TDD → superpowers' test-driven-development; hands-off autonomous building
+  across a backlog → cracked-dev; pure diff review → /code-review; security or PHI audit →
+  sr-security-auditor; BEFORE building a mid-size+ COMMODITY capability from scratch (rate
+  limiter, auth flow, parser, job queue, charting, diff engine, CSV/PDF pipeline, search/index)
+  consult build-vs-borrow FIRST (advisory DEPEND/FORK/VENDOR/BUILD verdict); to ADOPT or wire in
+  an existing OSS component ("add library X", "integrate an existing Y") consult find-oss FIRST,
+  then implement its integration plan.
 ---
 
 # Sr. Full Stack Engineer

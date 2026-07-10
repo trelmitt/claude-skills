@@ -102,15 +102,9 @@ cp -r <skill-path> <workspace>/skill-snapshot/
 
 ### Step 2 — Diagnose
 
-Read the skill and the user's complaint. Common failure modes and their fixes:
-
-| Symptom | Likely cause | Fix |
-|---|---|---|
-| Skill produces generic output | Body too vague, no examples | Add concrete examples; sharpen the diagnostic steps |
-| Skill over-engineers / thrashes | Body has rigid over-structured steps the model fights | Strip constrictive MUSTs; explain the why instead |
-| Skill ignores key constraint | Constraint buried mid-body | Surface it; if safety/correctness, make it a hard rule |
-| Output inconsistent run-to-run | No output template | Add an explicit output structure |
-| Skill repeats the same setup work every run | Missing bundled script | Write it once into `scripts/` |
+Read the skill and the user's complaint, then match against the symptom → cause → fix
+table in `references/failure-modes.md` (generic output, over-engineering, ignored
+constraints, inconsistent output, repeated setup work). Diagnose before editing.
 
 ### Step 3 — Read the Transcripts, Not Just Outputs
 

@@ -1,24 +1,19 @@
 ---
 name: migration-safety-reviewer
-description: >
-  A pre-commit RELIABILITY gate for Postgres / Supabase schema migrations — it reviews a pending
-  migration for DESTRUCTIVE, IRREVERSIBLE, or LOCK-HEAVY operations that can drop data, break
-  running code, or take prod down, then returns a severity-rated go / no-go report plus a safer
-  expand-migrate-contract rewrite. Use this whenever someone writes, edits, or is about to commit
-  a file under /supabase/migrations (or any raw DDL), or asks any of: "is this migration safe",
-  "will this migration lock the table", "review my migration", "can I ship this schema change",
-  "is this reversible", "will this drop data", "safe way to drop / rename this column", "add a NOT
-  NULL column safely", "backfill without downtime", "migration preflight". It catches: DROP /
-  destructive ALTER, type narrowing, NOT NULL on a populated column without a default, renames
-  that break in-flight app code, missing IF EXISTS / IF NOT EXISTS, CREATE INDEX without
-  CONCURRENTLY, ACCESS EXCLUSIVE locks on large tables, unsafe in-line backfills, and migrations
-  with no rollback path. This is the reliability floor the autonomous dev-loop demands before a
-  migration merges to Claude-Code-v1. Distinct from supabase-rls-test-harness and
-  supabase-security-reviewer (which cover AUTHORIZATION — does this leak across tenants) and from
-  sr-security-auditor (general security). This skill asks "will this migration survive contact
-  with production data and live traffic," not "who can read the rows." When the change also adds
-  or alters a table's RLS, flag the authorization surface and defer the actual proof to
-  supabase-rls-test-harness.
+description: >-
+  A pre-commit RELIABILITY gate for Postgres/Supabase schema migrations — reviews a pending
+  migration for DESTRUCTIVE, IRREVERSIBLE, or LOCK-HEAVY operations, returning a severity-rated
+  go/no-go report plus a safer expand-migrate-contract rewrite. Use whenever someone writes,
+  edits, or is about to commit a file under /supabase/migrations (or any raw DDL), or asks: "is
+  this migration safe", "will this lock the table", "review my migration", "can I ship this schema
+  change", "is this reversible / will this drop data", "safe way to drop/rename this column", "add
+  a NOT NULL column safely", "backfill without downtime", "migration preflight". Catches:
+  DROP/destructive ALTER, type narrowing, NOT NULL on a populated column, renames that break
+  in-flight code, missing IF [NOT] EXISTS, CREATE INDEX without CONCURRENTLY, ACCESS EXCLUSIVE
+  locks on large tables, unsafe inline backfills, no rollback path. Distinct from
+  supabase-rls-test-harness / supabase-security-reviewer (AUTHORIZATION — cross-tenant leaks) and
+  sr-security-auditor: this asks "will it survive production data and live traffic". If the change
+  also touches RLS, flag it and defer proof to supabase-rls-test-harness.
 ---
 
 # Migration Safety Reviewer

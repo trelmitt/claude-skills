@@ -1,7 +1,19 @@
 ---
 name: product-idea-generator
-description: >
-  A deeply generative product ideation skill that acts as an elite sparring partner to GENERATE the most valuable next features and product directions for ONE product and converge them into a ranked, scored shortlist (a concrete artifact). This is the go-to for feature-level ideation that ends in a ranked list — reach for it whenever the user wants OPTIONS generated, e.g. "what should I build next", "what could I build", "what are the most valuable features I could add", "what would make this product more valuable", or "I need product ideas for X". Project-agnostic — works across any product, domain, or stage. Routing — pick a sibling instead when the job is different: for open-ended thinking-out-loud or pressure-testing ONE idea/direction with NO saved artifact use product-brainstorming — that's the divergent, pre-artifact sparring; THIS is the convergent job that ends in a ranked, scored shortlist (the test: no saved list wanted → product-brainstorming, ranked list wanted → here); for ONE expert's decisive recommendation on a specific positioning/strategy question use product-strategy-consultant; to stress-test a decision from multiple adversarial angles use shadow-board-advisor; to decide what to work on ACROSS multiple projects use portfolio-orchestrator; if the user first needs the competitive/market field mapped (a teardown, landscape, moat thesis, or battlecard) rather than feature options, use competitive-analysis, then bring its action plan back here. Run BEFORE feature-roadmap-builder.
+description: >-
+  Generative product ideation: an elite sparring partner that GENERATES the most valuable next
+  features and directions for ONE product and converges them into a ranked, scored shortlist (a
+  concrete artifact). The go-to whenever the user wants OPTIONS generated: "what should I build
+  next", "what could I build", "what are the most valuable features I could add", "what would make
+  this product more valuable", "I need product ideas for X". Project-agnostic, any domain or
+  stage. Routing — pick a sibling when the job differs: thinking-out-loud or pressure-testing ONE
+  idea with NO saved artifact → product-brainstorming (the test: no saved list wanted →
+  brainstorming; ranked list wanted → here); ONE expert's decisive call on a specific
+  positioning/strategy question → product-strategy-consultant; multi-angle adversarial stress-test
+  of a decision → shadow-board-advisor; choosing what to work on across PROJECTS →
+  portfolio-orchestrator; if the competitive/market field needs mapping first (teardown,
+  landscape, moat thesis, battlecard) → competitive-analysis, then bring its action plan back
+  here. Run BEFORE feature-roadmap-builder.
 ---
 
 # Product Idea Generator

@@ -1,6 +1,19 @@
 ---
 name: product-brainstorming
-description: Sharp product thinking partner for brainstorming, problem exploration, solution ideation, and assumption stress-testing. Use whenever a PM or founder wants to think out loud, challenge an idea, explore a problem space, generate options before converging, or pressure-test a direction before writing a spec. Also trigger when someone says "I'm not sure what to build", "help me think through this", "stress-test my idea", "what am I missing", "should we build X", "our competitor just did Y", or any variation of wanting a sparring partner rather than a deliverable. Do NOT fire when the user wants many OPTIONS generated and ranked into a scored shortlist artifact ("what should I build next", "give me feature ideas", "what are the most valuable features I could add") — that convergent, artifact-producing job is product-idea-generator; THIS skill is the divergent sparring that explores a problem space or pressure-tests ONE idea/direction and yields sharpened thinking, not a deliverable. The test: want a saved ranked list → product-idea-generator; want to think it through out loud first → here. If "our competitor just did Y" means the user wants the competitor actually researched and torn down (not just sparring), hand off to competitive-analysis. Do not wait for the phrase "brainstorm" — trigger any time someone is in pre-spec, pre-decision exploratory mode.
+description: >-
+  Sharp product thinking partner for brainstorming, problem exploration, solution ideation, and
+  assumption stress-testing. Use whenever a PM or founder wants to think out loud, challenge an
+  idea, explore a problem space, generate options before converging, or pressure-test a direction
+  before writing a spec: "I'm not sure what to build", "help me think through this", "stress-test
+  my idea", "what am I missing", "should we build X", "our competitor just did Y" — any variation
+  of wanting a sparring partner rather than a deliverable. Don't wait for the word "brainstorm";
+  fire whenever someone is in pre-spec, pre-decision exploratory mode. Do NOT fire when the user
+  wants OPTIONS generated and ranked into a scored shortlist artifact ("what should I build next",
+  "give me feature ideas") — that convergent job is product-idea-generator; THIS is the divergent
+  sparring that yields sharpened thinking, not a deliverable (the test: saved ranked list wanted →
+  product-idea-generator; think it through out loud first → here). If "our competitor just did Y"
+  means they want the competitor actually researched and torn down, hand off to
+  competitive-analysis.
 ---
 
 # Product Brainstorming Skill

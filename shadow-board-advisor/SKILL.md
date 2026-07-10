@@ -1,21 +1,19 @@
 ---
 name: shadow-board-advisor
-description: >
+description: >-
   Convenes a 6-seat elite advisory board — two selectable panels — to STRESS-TEST a decision from
-  multiple adversarial angles in devil's-advocate mode and issue ONE structured verdict memo. Reach
-  for this whenever the user wants a decision pressure-tested from many perspectives before
-  committing — especially big, irreversible, or multi-stakeholder calls. Panel A (Functional
-  Executives: VC, CFO, Legal, GTM, Product, Operator) for tactical, financial, legal, GTM, and
-  operational calls grounded in real numbers; Panel B (Founder Archetypes: Sam Altman, Peter Thiel,
-  Brian Chesky, Marc Andreessen, Elon Musk, Patrick Collison) for zoom-out strategy, positioning,
-  pivots, fundraising narrative, and moat. Trigger on "convene the board", "run this by the board",
-  "stress-test this decision", "pressure-test this", "what am I not seeing", "poke holes in this",
-  "what would an investor / operator / CFO / Altman / Thiel think", "validate before I commit",
-  whether they're investor-ready, a pivot, a major hire, or a pricing / partnership / acquisition
-  decision — even if they don't say "board." Auto-selects the panel from the question (or runs
-  both); the user can request a specific panel or a single seat. Routing — pick a sibling instead
-  when the job is different: for ONE decisive expert recommendation (not a multi-seat stress-test)
-  use product-strategy-consultant; to GENERATE feature ideas use product-idea-generator.
+  multiple adversarial angles in devil's-advocate mode and issue ONE structured verdict memo. Use
+  for big, irreversible, or multi-stakeholder calls. Panel A (Functional Executives: VC, CFO,
+  Legal, GTM, Product, Operator) for tactical/financial/legal/GTM/operational calls grounded in
+  real numbers; Panel B (Founder Archetypes: Sam Altman, Peter Thiel, Brian Chesky, Marc
+  Andreessen, Elon Musk, Patrick Collison) for zoom-out strategy, positioning, pivots, fundraising
+  narrative, and moat. Trigger on: "convene the board", "run this by the board", "stress-test /
+  pressure-test this decision", "what am I not seeing", "poke holes in this", "what would an
+  investor/operator/CFO/Altman/Thiel think", "validate before I commit" — investor-readiness,
+  pivots, major hires, pricing/partnership/acquisition calls, even if they never say "board".
+  Auto-selects the panel (or runs both); a single seat can be requested. Routing: ONE decisive
+  expert recommendation → product-strategy-consultant; GENERATE feature ideas →
+  product-idea-generator; choose across PROJECTS → portfolio-orchestrator.
 ---
 
 # Shadow Board Advisor
