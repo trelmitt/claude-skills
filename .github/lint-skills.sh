@@ -6,14 +6,19 @@
 #   - a skill dir without SKILL.md
 #   - frontmatter `name:` missing or != directory name (the SCRAMBLE guard)
 #   - frontmatter `description:` missing
+#   - description longer than 1200 chars — the always-loaded token tax; the
+#     whole library was compressed under this budget, and this gate is the
+#     ratchet that keeps bloat from silently returning
 #   - any *.local.md present (confidential context must never be committed/synced)
 # Warnings (exit 0):
-#   - description longer than 1200 chars (always-loaded token tax; hard-fail at
-#     2500 is deferred until the C1 description-compression pass lands)
+#   - description longer than 1100 chars (approaching the budget)
+# Length is measured on the PARSED description value (folded lines joined,
+# indentation stripped) — that's what actually loads into context.
 set -uo pipefail
 
 DIR="${1:?usage: lint-skills.sh <skills-dir>}"
-WARN_AT=1200
+WARN_AT=1100
+FAIL_AT=1200
 fail=0
 
 for d in "$DIR"/*/; do
@@ -31,8 +36,12 @@ for d in "$DIR"/*/; do
               c==1 && f && /^[a-zA-Z_-]+:/{exit} c==1 && f{print} c>1{exit}' "$f")
   if [ -z "$desc" ]; then echo "✗ $s: no 'description:' in frontmatter"; fail=1
   else
-    len=$(printf '%s' "$desc" | wc -c | tr -d ' ')
-    [ "$len" -gt "$WARN_AT" ] && echo "⚠ $s: description ${len} chars (> ${WARN_AT}) — always-loaded token tax, compress"
+    # normalize to the parsed value: strip per-line indentation, join with single spaces
+    norm=$(printf '%s\n' "$desc" | sed 's/^[[:space:]]*//; s/[[:space:]]*$//' | tr '\n' ' ' | sed 's/ $//')
+    len=$(printf '%s' "$norm" | wc -c | tr -d ' ')
+    if [ "$len" -gt "$FAIL_AT" ]; then echo "✗ $s: description ${len} chars (> ${FAIL_AT}) — over the always-loaded budget"; fail=1
+    elif [ "$len" -gt "$WARN_AT" ]; then echo "⚠ $s: description ${len} chars (> ${WARN_AT}) — approaching the ${FAIL_AT} budget"
+    fi
   fi
 done
 

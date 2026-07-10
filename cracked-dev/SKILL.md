@@ -128,42 +128,15 @@ Append a structured entry to `.cracked-dev/state.md` **on the same branch** (so 
 along in this item's PR): what you did and why, the result, repo conventions you learned, what
 you ruled out, and the next candidates. Format per **`references/state-file.md`**. Then loop.
 
-## Execution model — orchestrator + per-item subagents (full-auto only)
+## Execution model (full-auto only)
 
-In full-auto mode you run as a **lean orchestrator**, not as the thing that does the building.
-The phases above are the contract; *who* runs them is what makes the loop token-efficient.
-
-**Why this exists.** A relentless loop run inline in a single conversation grows roughly
-quadratically: every cycle re-processes all prior cycles' repo scans, test output, and audit
-reports still sitting in context. Isolating each cycle's heavy reads into a subagent that
-returns only a compact result keeps the orchestrator's context nearly flat — **O(N) instead of
-O(N²)**. This works *because* memory is externalized to the committed `.cracked-dev/state.md`,
-not the conversation: a fresh subagent reads state.md, never your transcript.
-
-Per cycle, the orchestrator does only this:
-
-1. **Dispatch a SCOUT subagent** → it runs TRIAGE + RANK (reading the repo, `.cracked-dev/state.md`,
-   and open PRs via `gh pr list`) and **returns only** a compact ranked table: the top ~3
-   candidates with their 4-lens scores and a one-line rationale each. It builds nothing.
-2. **Pick the #1 item**, then check the stop conditions + cycle budget. If clear to proceed:
-3. **Dispatch a BUILDER subagent** for that one item → it runs PLAN → BUILD → VERIFY →
-   SELF-AUDIT → PR (+ merge policy) → LOG in its own isolated context. Its dispatch prompt must
-   carry: the one item, the repo conventions + `<default>` branch learned in Step 0, the full
-   phase contract and the **Hard fences** below, and the required return format. It **returns
-   only** the compact delta: PR URL, SAFE/RISKY + the merge action taken, the one-line result it
-   logged, and any new "next candidate" it surfaced.
-4. **Record that one-line delta** and **loop.** Do *not* re-read the repo or the full state file
-   in the orchestrator — trust the scout's next fresh read. Re-reading is exactly what
-   reintroduces the quadratic growth you just removed.
-
-**The builder is focused mode.** The clean way to dispatch step 3 is to have the subagent run
-this skill in focused mode on the single item (`/cracked-dev <item>`) — same pipeline, isolated
-context, fences intact.
-
-**Cost of isolation — accept it knowingly.** Two spawns per cycle and no prompt-cache sharing
-between subagents, so a *single* item in isolation costs slightly more than inline; the win is
-cumulative across the loop. Therefore **`plan` and focused single-task modes run inline** (no
-subagents): with no multi-cycle accumulation to amortize, inline is the cheaper choice there.
+In full-auto mode you run as a **lean orchestrator**, not the thing that does the building —
+per cycle: dispatch a SCOUT subagent (TRIAGE + RANK, returns a compact ranked table), pick #1,
+check stop conditions, dispatch a BUILDER subagent that runs this skill in focused mode on that
+one item, record its one-line delta, loop. **Before starting the loop, read
+`references/execution-model.md`** for the full protocol, the dispatch-prompt contract, and why
+isolation keeps the loop O(N) instead of O(N²). `plan` and focused modes run inline (no
+subagents).
 
 ## Hybrid merge policy
 

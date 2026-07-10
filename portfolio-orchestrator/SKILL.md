@@ -1,20 +1,18 @@
 ---
 name: portfolio-orchestrator
-description: >
-  The plan-mode "AI chief of staff" across all of the user's active projects. Surveys the
-  portfolio's live state (CI health, momentum, verification floors), reads each project's goal +
-  open questions from the Obsidian vault, ranks the portfolio by momentum × leverage (NO fixed
-  priority — a suggestion the user decides on), and proposes a cross-project agenda for the user
-  to approve. It is read-only and propose-only: it produces a ranked plan plus a single
-  recommended next action, then STOPS for human approval — it never edits code or executes work
-  itself. Trigger when the user says "run the orchestrator", "convene the orchestrator", "what
-  should I work on across my projects", "plan across my projects", "portfolio plan",
-  "cross-project agenda", "what's the highest-leverage thing right now across my projects", or asks the AI-CEO /
-  portfolio layer what's next. Honors the governance gate (never autonomous on PHI/payments
-  surfaces; human approval + token budget per cycle). This is the CROSS-PROJECT layer only — for
-  what to build or decide WITHIN a single project use product-idea-generator (generate feature
-  ideas), product-strategy-consultant (decide one question), or shadow-board-advisor (stress-test
-  a decision).
+description: >-
+  The plan-mode "AI chief of staff" across ALL of the user's active projects. Surveys live
+  portfolio state (CI health, momentum, verification floors), reads each project's goal + open
+  questions from the Obsidian vault, ranks by momentum × leverage (NO fixed priority — a
+  suggestion the user decides on), and proposes a cross-project agenda. Read-only and
+  propose-only: a ranked plan plus ONE recommended next action, then STOPS for human approval — it
+  never edits code or executes work. Trigger on: "run/convene the orchestrator", "what should I
+  work on across my projects", "plan across my projects", "portfolio plan", "cross-project
+  agenda", "what's the highest-leverage thing right now across my projects", or asking the AI-CEO
+  / portfolio layer what's next. Honors the governance gate (never autonomous on PHI/payments
+  surfaces; human approval + token budget per cycle). CROSS-PROJECT layer only — WITHIN a single
+  project use product-idea-generator (generate feature ideas), product-strategy-consultant (decide
+  one question), or shadow-board-advisor (stress-test a decision).
 ---
 
 # Portfolio Orchestrator (Phase 2 — plan-mode)

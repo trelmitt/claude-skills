@@ -12,8 +12,7 @@ description: >-
   X". Also fire on: "should I build this or is there a library", "build vs buy" (a code
   capability), "is there prior art / an open-source version of", "don't reinvent the wheel", "can
   we borrow/fork/steal code for", "roll my own / hand-roll / DIY X from scratch". Do NOT fire for
-  trivial utilities or few-line glue — searching costs more than writing those. If borrow is
-  already decided, use find-oss instead.
+  trivial utilities or few-line glue. If borrow is already decided, use find-oss instead.
 ---
 
 # Build vs Borrow
